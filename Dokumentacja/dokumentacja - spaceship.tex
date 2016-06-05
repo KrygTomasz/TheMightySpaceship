@@ -1,0 +1,119 @@
+\documentclass{article}
+\usepackage{color}
+\setlength{\textwidth}{6.6in}
+\setlength{\oddsidemargin}{0in}
+\linespread{1.5}
+\usepackage[T1]{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\begin{document}
+\begin{normalsize}
+
+\begin{center}
+\Huge
+{Dokumentacja projektu - The Mighty Spaceship}\\
+\end{center}
+\Large
+{Karolina Chrząszcz -- Bonus, Player}\\
+{Szymon Górnioczek -- Bullet, Enemies, Spaceship}\\
+{Tomasz Kryg -- Bullet, Bullets, My\_Window, Spaceship}\\
+{Michał Wolszleger -- Bullet, Enemies, Enemy, Player}\\
+
+\section*{Część I}
+	\subsection*{Opis programu}
+		\begin{enumerate}
+			\item \textbf{Ogólne informacje:}\\
+			Program "The Mighty Spaceship" jest grą. Polega na poruszaniu się statkiem kosmicznym po planszy oraz na zestrzeliwaniu wrogów. Co pewien czas pojawiają się bonusy a także specjalni wrogowie, których należy pokonać w~celu awansowania na wyższy poziom. Im wyższy jest nasz poziom, tym trudniejsza staje się gra.
+			\item \textbf{Możliwości i ograniczenia}\\
+			Gra przeznaczona jest dla osób w dowolnym przedziale wiekowym.
+			\item \textbf{Wymagania programu}\\
+			Program wymaga systemu operacyjnego Windows w wersji: XP, Vista, 7 lub 8. Wymagane jest również zainstalowanie pakietu Visual C++ Redistributable Packages for Visual Studio 2013, który można za~darmo pobrać ze strony:
+\begin{center}
+http://www.microsoft.com/en-us/download/details.aspx?id=40784
+\end{center}
+
+oraz biblioteki FLTK, którą można za darmo pobrać ze strony:
+\begin{center}
+http://www.fltk.org/software.php
+\end{center}
+
+
+		\end{enumerate}
+		
+	\subsection*{Instrukcja obsługi}
+		\begin{enumerate}
+			\item Jak uruchomić program?\\
+			Po zainstalowaniu powyższego pakietu, wystarczy włączyć dwukrotnym kliknięciem lewego przycisku myszy ikonę programu o plik 'TheMightySpaceship', który otwierany jest w Microsoft Visual Studio. Należy go skompilować.
+			\item Co dalej?\\
+			Po włączeniu programu, pojawi się menu gry. Odpowiednie napisy na przyciskach informują nas o tym, gdzie trafimy po ich naciśnięciu. Naciskając przycisk z etykietką "New Game" rozpoczniemy nową grę. Aby załadować zapisaną wcześniej grę należy wybrać przycisk "Load Game". Wybierając przycisk "Instructions" otrzymamy wskazówki dotyczące gry. Przycisk "Authors" spowoduje wyświetlenie autorów tworzących tę grę, natomiast klikając przycisk "Quit" zakończymy działanie programu.
+		\end{enumerate}
+		
+\newpage		
+		
+\section*{Część II}
+	\subsection*{Specyfikacja techniczna}
+	Projekt gry "The Mighty Spaceship" podzielony został na 12 plików nagłówkowych (z rozszerzeniem *.h) oraz 12 głównych plików (z rozszerzeniem *.cpp).
+	\begin{enumerate}
+		\item Pliki nagłówkowe:
+			\begin{itemize}
+			
+				\item \verb;Background.h;\\
+				Zawiera prototypy klasy Background służącej do narysowania tła.
+				
+				\item \verb;Bonus.h;\\
+				Zawiera prototypy klasy Bonus pozwalającej na generowanie się bonusów podczas gry.
+				
+				\item \verb;Bullet.h;\\
+				Zawiera prototypy klasy Bullet opisującej pociski, którymi można strzelać.
+				
+				\item \verb;Bullets.h;\\
+				Zawiera prototypy klasy Bullets pozwalającej na generowanie się w odpowiednich momentach nowego obiektu z klasy Bullet.
+				
+				\item \verb;config.h;\\
+				Zawiera jedynie zdefiniowane zmienne takie jak: wielkość okna, wielkość planszy, początek planszy, długość efektu poruszania się statku w przestrzeni oraz wielkości obrazków.
+				\item \verb;Enemies.h;\\
+				Zawiera prototypy klasy Enemies, która pozwala na całkowicie losowe generowanie się obiektów klasy Enemy (wrogów).
+				\item \verb;Enemy.h;\\
+				Zawiera prototypy klasy Enemy opisującej wrogów.
+				\item \verb;Game_Board.h;\\
+				Zawiera prototypy klasy Game\_Board służącej do narysowania tła planszy.
+				\item \verb;My_Button.h;\\
+				Zawiera prototypy klasy My\_Button, która jest odpowiednio określonym obiektem typu Fl\_Button.
+				\item \verb;My_Window.h;\\
+				Zawiera prototypy klasy My\_Window, która odpowiada za odpowiednie skonstruowanie i połączenie wszystkich klas w jednym oknie.
+				\item \verb;Player.h;\\
+				Zawiera prototypy klasy Player, dzięki której można zapisywać oraz ładować grę.
+				\item \verb;Spaceship.h;\\
+				Zawiera prototypy klasy Spaceship opisującej statek kosmiczny, którym gracz się porusza podczas gry.
+								
+			\end{itemize}
+		\item Główne pliki:
+			\begin{itemize}
+				\item \verb;Background.cpp;\\
+					Tutaj zdefiniowany jest konstruktor i destruktor klasy Background oraz funkcja draw(), która rysuje w odpowiednim miejscu zadane tło.
+				\item \verb;Bonus.cpp;\\
+					W tym miejscu znajdują się definicje konstruktora, destruktora oraz funkcji działających w klasie Bonus takich jak funkcja draw() oraz inne funkcje odpowiadające za generowanie, widzialność oraz kolizje.
+				\item \verb;Bullet.cpp;\\
+					Tutaj znajduje się konstruktor oraz destruktor klasy Bullet wraz z funkcją draw() pozwalającą na rysowanie pocisku a także funkcjami pozwalającymi na poruszanie się pocisku i sprawdzanie czy pocisk opuścił dopuszczalne pole gry.
+				\item \verb;Bullets.cpp;\\
+					Tutaj zdefiniowane zostały funkcje pozwalające na pojawianie się obiektów klasy Bullet w odpowiednich miejscach, usuwanie pocisków, które opuściły planszę oraz na rysowanie wszystkich istniejących pocisków.
+				\item \verb;Enemies.cpp;\\
+					W tym miejscu zdefioniowane zostały funkcje działające na klasie Enemy i pozwalające na losowe generowanie oraz poruszanie się obiektów klasy Enemy i usuwanie wrogów, którzy opuścili pole gry. Są tu również funkcje pozwalające sprawdzić czy jakikolwiek wróg został trafiony pociskiem lub czy zderzył się z naszym statkiem. Znajduje się tutaj także funkcja generująca raz na jakiś czas mocniejszego wroga, który odbija się po planszy i znika dopiero po kilkukrotnym zestrzeleniu.
+				\item \verb;Enemy.cpp;\\
+					Tutaj zdefiniowany jest konstruktor oraz destruktor do klasy Enemy. Konstruktor określa losowe miejsce pojawienia się wroga. Znajduje się tutaj również definicja funkcji draw(), a także definicje funkcji pozwalających na poruszanie się wrogów oraz sprawdzanie czy i z której strony opuścili planszę.
+				\item \verb;Game_Board.cpp;\\
+					Tutaj zdefiniowany został konstruktor oraz destruktor klasy Game\_Board wraz z funkcją draw() pozwalającą na narysowanie pola gry.
+				\item \verb;main.cpp;\\
+					Ten plik odpowiada za połączenie wszystkiego w całość i włączenie się programu. Są tutaj  zdefiniowane dwie funkcje pozwalające na konwertowanie liczb na znaki oraz dwie funkcje callback z użyciem funkcji Fl::repeat\_timeout. Pierwsza z nich odpowiada przede wszystkim za odświeżanie się okna z prędkością 60 fps a także za przesuwanie się odpowiednich obiektów oraz bezustanne sprawdzanie kolizji, które mogły nastąpić. Druga funkcja (callbackBonus) pozwala na pojawianie się bonusów. W funkcji main generowane jest jedynie obiekt klasy My\_Window oraz dwie funkcje Fl::add\_timeout.
+				\item \verb;My_Button.cpp;\\
+					W tym miejscu zdefiniowane zostały tylko konstruktor oraz destruktor klasy My\_Button. Konstruktor jest konstruktorem klasy Fl\_Button z~odpowiednimi początkowymi właściwościami przycisku.
+				\item \verb;My_Window.cpp;\\
+					Tutaj zdefiniowany został konstruktor oraz destruktor klasy My\_Window oraz funkcje callback, które są przypisane do odpowiednich przycisków. Konstruktor tworzy wszystko co widać i czego nie widać podczas gry i~łączy to w jednej klasie.
+				\item \verb;Player.cpp;\\
+					W tym miejscu zdefiniowany został konstruktor klasy Player oraz funkcje odpowiadające za zakończenie gry, zapis obecnego stanu gry do pliku, reset gry oraz załadowanie zapisanego stanu gry.
+				\item \verb;Spaceship.cpp;\\
+					Tutaj zdefiniowane zostały konstruktor oraz destruktor klasy Spaceship. Jest tu zdefiniowana także funkcja draw() pozwalająca na rysowanie statku kosmicznego. Jest tu także definicja funkcji handle, która pozwala na sprawdzenie jaki klawisz został naciśnięty i przydzielenie go do odpowiedniej operacji. Znajduje się tu również funkcja odpowiadająca za poruszanie się statku.
+			\end{itemize}
+	\end{enumerate}
+\end{normalsize}
+\end{document}
